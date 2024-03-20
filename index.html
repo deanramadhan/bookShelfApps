@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submission Bookshelf Apps</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1 class="headBarTitle">My Bookshelf Apps</h1>
+    </header>
+    <main>
+        <section class="inputSection">
+            <h2>Input New Book</h2>
+            <form id="inputBook">
+                <div class="input">
+                    <label for="inputBookTitle">Title</label>
+                    <input id="inputBookTitle" type="text" required>
+                </div>
+                <div class="input">
+                    <label for="inputBookAuthor">Author</label>
+                    <input id="inputBookAuthor" type="text" required>
+                </div>
+                <div class="input">
+                    <label for="inputBookYear">Year</label>
+                    <input id="inputBookYear" type="number" required>
+                </div>
+                <div class="inputInline">
+                    <label for="inputBookIsComplete">Finished Reading</label>
+                    <input id="inputBookIsComplete" type="checkbox" required>
+                </div>
+                <button id="bookSubmit" type="submit">Put The Book On The Self
+                    <span>Not Finished Reading</span>
+                </button>
+            </form>
+        </section>
+
+        <section class="searchSection">
+            <h2>Search Books (Options)</h2>
+            <form id="searchBook">
+                <label for="searchBookTitle">Title</label>
+                <input id="searchBookTitle" type="text">
+                <button id="searchSubmit" type="submit">Search</button>
+            </form>
+        </section>
+
+        <section class="bookShelf">
+            <h2>Not Finished Reading</h2>
+            <div id="incompleteBookshelfList" class="bookList">
+                <article class="bookItem">
+                    <h3></h3>
+                    <p>Author: </p>
+                    <p>Year: </p>
+
+                    <div class="action">
+                        <button class="orange">Finished Reading</button>
+                        <button class="red">Delete Book</button>
+                    </div>
+                </article>
+            </div>
+        </div>
+
+        <section class="bookShelf">
+            <h2>Finished Reading</h2>
+            <div id="completeBookshelfList" class="bookList">
+                <article class="bookItem">
+                    <h3></h3>
+                    <p>Author: </p>
+                    <p>Year: </p>
+
+                    <div class="action">
+                        <button class="orange">Not Finished Reading</button>
+                        <button class="red">Delete Book</button>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p class="footBar">Submission Belajar Membuat Front-End Web untuk Pemula &#169; 2024, SIB Dicoding Cycle 6</p>
+    </footer>
+    <script src="main.js"></script>
+</body>
+
+</html>
