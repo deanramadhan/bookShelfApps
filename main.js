@@ -5,13 +5,13 @@ function generatedId() {
     return +new Date();
 }
 
-function generateBookObject (id, title, author, year, isCompleted) {
+function generateBookObject (id, title, author, year, IsComplete) {
     return {
         id, 
         title,
         author,
         year,
-        isCompleted,
+        IsComplete,
     };
 }
 
@@ -24,12 +24,13 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function addBook() {
-    const title = document.getElementById("inputBookTitle").value;
-    const writer = document.getElementById("inputBookAuthor").value;
-    const year = document.getElementById("inputBookYear").value;
+    const titleBook = document.getElementById("inputBookTitle").value;
+    const writerBook = document.getElementById("inputBookAuthor").value;
+    const yearBook = document.getElementById("inputBookYear").value;
+    const isComplete = document.getElementById("inputBooksIsComplete").Checked;
     
     const generatedID = generatedId();
-    const bookObject = generateBookObject(generatedID, title, writer, year, false);
+    const bookObject = generateBookObject(generatedID, titleBook, writerBook, yearBook,isComplete, false);
     books.push(bookObject);
 
     document.dispatchEvent(new Event(RENDER_BOOK));
@@ -55,7 +56,7 @@ function makeBook(bookObject){
     textContainer.append(container);
     container.setAttribute('id', `book-${bookObject.id}`);
 
-    if (bookObject.isCompleted) {
+    if (bookObject.IsComplete) {
         const undoButton = document.createElement('button');
         undoButton.classList.add('orange');
         undoButton.innerText = 'Not Finished Reading';
@@ -97,17 +98,19 @@ function makeBook(bookObject){
 document.addEventListener(RENDER_BOOK, function () {
     // console.log(books);
     const uncompletedBooks = document.getElementById("uncompletedBooks");
-    const completedBooks = document.getElementById("uncompletedBooks");
+    const completedBooks = document.getElementById("completedBooks");
 
     uncompletedBooks.innerHTML = "";
-    completedBook.innerHTML = "";
-    for (bookItem of books) {
-        const booksElement = makeTheBook(bookItem);
-        if (bookItem.isCompleted) {
-            completedBook.append(booksElement);
+    completedBooks.innerHTML = "";
+    for (const bookItem of books) {
+        const booksElement = makeBook(bookItem);
+        if (bookItem.IsComplete) {
+            completedBooks.appendChild(booksElement);
         } else {
-         uncompletedBooks.append(booksElement);
+         uncompletedBooks.appendChild(booksElement);
       } 
     }
 });
+
+
 
