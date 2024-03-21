@@ -21,16 +21,33 @@ document.addEventListener("DOMContentLoaded", function () {
         event.preventDefault();
         addBook();
     });
+
+    if (isStorageExist()) {
+        loadDataFromStorage();
+    }
 });
 
 function addBook() {
     const titleBook = document.getElementById("inputBookTitle").value;
-    const writerBook = document.getElementById("inputBookAuthor").value;
+    const authorBook = document.getElementById("inputBookAuthor").value;
     const yearBook = document.getElementById("inputBookYear").value;
-    const isComplete = document.getElementById("inputBooksIsComplete").Checked;
+    
+    var cbCompleted = document.getElementsByName('inputBookIsComplete');
+    var isComplete = false;
+    for (var i = 0; i < cbCompleted.length; i++) {
+        if (cbCompleted[i].checked) {
+            isComplete = true;
+        }
+
+    }
+
+    document.getElementById('inputBookTitle').value="";
+    document.getElementById('inputBookAuthor').value="";
+    document.getElementById('inputBookYear').value="";
+    document.getElementsByName('inputBookIsComplete').checked=false;
     
     const generatedID = generatedId();
-    const bookObject = generateBookObject(generatedID, titleBook, writerBook, yearBook,isComplete, false);
+    const bookObject = generateBookObject(generatedID, titleBook, authorBook, yearBook,isComplete, false);
     books.push(bookObject);
 
     document.dispatchEvent(new Event(RENDER_BOOK));
@@ -48,7 +65,7 @@ function makeBook(bookObject){
     textYear.innerText = bookObject.year;
 
     const textContainer = document.createElement('article');
-    textContainer.classList.add('bookItem');
+    textContainer.classList.add('bookItem', 'shadow');
     textContainer.append(textTitle, textAuthor, textYear);
 
     const container = document.createElement('div');
@@ -75,7 +92,7 @@ function makeBook(bookObject){
         // document.getElementById('completeBookshelfList').appendChild(container);
     } else {
         const doneButton = document.createElement('button');
-        doneButton.classList.add('green');
+        doneButton.classList.add('orange');
         doneButton.innerText = 'Finished Reading';
         doneButton.addEventListener('click', function () {
             addTaskToCompleted(bookObject.id);
@@ -97,20 +114,19 @@ function makeBook(bookObject){
 
 document.addEventListener(RENDER_BOOK, function () {
     // console.log(books);
-    const uncompletedBooks = document.getElementById("uncompletedBooks");
-    const completedBooks = document.getElementById("completedBooks");
+    const uncompletedBooks = document.getElementById('incompleteBookshelfList');
+    const completedBooks = document.getElementById('completeBookshelfList');
 
     uncompletedBooks.innerHTML = "";
     completedBooks.innerHTML = "";
+
     for (const bookItem of books) {
         const booksElement = makeBook(bookItem);
         if (bookItem.IsComplete) {
-            completedBooks.appendChild(booksElement);
+            completedBooks.append(booksElement);
         } else {
-         uncompletedBooks.appendChild(booksElement);
+         uncompletedBooks.append(booksElement);
       } 
     }
 });
-
-
 
