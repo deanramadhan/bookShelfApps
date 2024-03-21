@@ -35,7 +35,7 @@
                 </div>
                 <div class="inputInline">
                     <label for="inputBookIsComplete">Finished Reading</label>
-                    <input id="inputBookIsComplete" type="checkbox" required>
+                    <input id="inputBookIsComplete" name="inputBookIsComplete" type="checkbox">
                 </div>
                 <button id="bookSubmit" type="submit">Put The Book On The Self
                     <span>Not Finished Reading</span>
@@ -54,33 +54,15 @@
 
         <section class="bookShelf">
             <h2>Not Finished Reading</h2>
-            <div id="uncompletedBooks" class="bookList">
-                <article class="bookItem">
-                    <h3></h3>
-                    <p>Author: </p>
-                    <p>Year: </p>
-
-                    <div class="action">
-                        <button class="orange">Finished Reading</button>
-                        <button class="red">Delete Book</button>
-                    </div>
-                </article>
+            <div id="incompleteBookshelfList" class="bookList">
+               
             </div>
-        </div>
+        </section>
 
         <section class="bookShelf">
             <h2>Finished Reading</h2>
-            <div id="completeBooks" class="bookList">
-                <article class="bookItem">
-                    <h3></h3>
-                    <p>Author: </p>
-                    <p>Year: </p>
-
-                    <div class="action">
-                        <button class="orange">Not Finished Reading</button>
-                        <button class="red">Delete Book</button>
-                    </div>
-                </article>
+            <div id="completeBookshelfList" class="bookList">
+                
             </div>
         </section>
     </main>
